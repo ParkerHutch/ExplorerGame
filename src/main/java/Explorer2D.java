@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import javax.imageio.*;
 //import java.awt.Image;
 import java.io.*;
-import java.net.URISyntaxException;
 
 public class Explorer2D extends Application
 {
@@ -166,21 +165,6 @@ public class Explorer2D extends Application
    } // end of start method
    public Image loadImage(String fileName)
    {
-      Image result = null;
-      try
-      {
-         //result = ImageIO.read(new File(fileName)); <- doesn't work
-         String otherName = this.getClass().getResource(fileName).toURI().toString();
-         result = SwingFXUtils.toFXImage(ImageIO.read(new File(otherName)), null);
-         // maybe if the file can't be found, set it to a question mark image
-      }
-      catch(IOException e)
-      {
-         e.printStackTrace();
-      }
-      catch (URISyntaxException e) {
-         System.out.println("weird error");
-      }
-      return result;
+      return new Image(fileName);
    }
 }
