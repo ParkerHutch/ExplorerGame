@@ -1,3 +1,5 @@
+package src.main.java;
+
 import javafx.animation.*;
 import javafx.scene.canvas.*;
 import javafx.scene.*;
@@ -13,7 +15,9 @@ import java.util.ArrayList;
 
 import javax.imageio.*;
 //import java.awt.Image;
+//import javafx.scene.image;
 import java.io.*;
+import java.net.URISyntaxException;
 
 public class Explorer2D extends Application
 {
@@ -61,7 +65,6 @@ public class Explorer2D extends Application
       textures.put(grass, loadImage("grass.png"));
       textures.put(water, loadImage("water.png"));
       textures.put(coal, loadImage("coal.png"));
-      
       // resources: list of all the resources
       ArrayList<Integer> resources = new ArrayList<Integer>();
       resources.add(dirt);
@@ -164,17 +167,6 @@ public class Explorer2D extends Application
    } // end of start method
    public Image loadImage(String fileName)
    {
-      Image result = null;
-      try
-      {
-         //result = ImageIO.read(new File(fileName)); <- doesn't work
-         result = SwingFXUtils.toFXImage(ImageIO.read(new File(fileName)), null);
-         // maybe if the file can't be found, set it to a question mark image
-      }
-      catch(IOException e)
-      {
-         e.printStackTrace();
-      }
-      return result;
+      return new Image(fileName);
    }
 }
